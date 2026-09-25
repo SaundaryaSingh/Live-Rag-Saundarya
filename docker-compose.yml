@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rag-engine:
+    build: .
+    container_name: streaming-live-rag
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+    restart: unless-stopped
